@@ -47,13 +47,14 @@ function transformFilename(file) {
 	file.revHash = revHash(file.contents);
 
 	file.path = modifyFilename(file.path, function (filename, extension) {
-		var extIndex = filename.indexOf('.');
+		return filename + extension + "?v=" + file.revHash;
+		// var extIndex = filename.indexOf('.');
 
-		filename = extIndex === -1 ?
-			revPath(filename, file.revHash) :
-			revPath(filename.slice(0, extIndex), file.revHash) + filename.slice(extIndex);
+		// filename = extIndex === -1 ?
+		// 	revPath(filename, file.revHash) :
+		// 	revPath(filename.slice(0, extIndex), file.revHash) + filename.slice(extIndex);
 
-		return filename + extension;
+		// return filename + extension;
 	});
 }
 
